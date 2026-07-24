@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran Donasi</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* animasi masuk */
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* efek card */
+.card-hover:hover {
+    transform: scale(1.02);
+}
+
+/* input focus */
+.input-style:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16,185,129,0.2);
+}
+</style>
+</head>
+
+<body class="bg-slate-100">
+
+<div class="flex min-h-screen fade-in">
+
+<!-- LEFT IMAGE -->
+<div class="hidden md:flex w-1/2 relative overflow-hidden">
+
+<img id="payImg" src=""
+class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+
+<div class="absolute inset-0 bg-black/40"></div>
+
+<div class="absolute bottom-0 p-8 text-white">
+    <h2 id="payTitle" class="text-3xl font-bold mb-2">Judul Bencana</h2>
+    <p class="text-sm opacity-90">
+        Donasi Anda membantu mereka bangkit kembali. Setiap kontribusi sangat berarti.
+    </p>
+</div>
+
+</div>
+
+<!-- RIGHT FORM -->
+<div class="w-full md:w-1/2 flex items-center justify-center p-6">
+
+<div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md card-hover transition-all duration-300">
+
+<!-- TOMBOL KEMBALI -->
+<button onclick="backDetail()" 
+class="mb-4 flex items-center gap-2 text-slate-500 hover:text-emerald-600 font-semibold transition group">
+
+<svg xmlns="http://www.w3.org/2000/svg" 
+class="h-5 w-5 transform group-hover:-translate-x-1 transition" 
+fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+
+</svg>
+
+Kembali ke Detail
+</button>
+
+<h2 class="text-2xl font-bold mb-6 text-slate-800">
+Form Donasi
+</h2>
+
+<form id="donationForm" onsubmit="pay(event)" class="space-y-4">
+
+<input id="nominal" type="number" placeholder="Nominal Donasi"
+class="w-full p-3 border rounded-xl input-style transition">
+
+<input id="nama" type="text" placeholder="Nama Lengkap"
+class="w-full p-3 border rounded-xl input-style transition">
+
+<input id="rekening" type="text" placeholder="No Rekening / E-Wallet"
+class="w-full p-3 border rounded-xl input-style transition">
+
+<textarea id="pesan" placeholder="Pesan Dukungan"
+class="w-full p-3 border rounded-xl input-style transition"></textarea>
+
+<button type="submit"
+class="w-full bg-emerald-600 text-white p-3 rounded-xl font-semibold hover:bg-emerald-700 transition active:scale-95">
+Donasi Sekarang
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+<div class="bg-white p-8 rounded-2xl text-center w-80">
+
+<!-- SUCCESS -->
+<div id="success" class="hidden">
+<div class="text-green-500 text-6xl mb-3">✔</div>
+<h2 class="text-green-600 text-xl font-bold">
+Pembayaran Berhasil
+</h2>
+<p class="text-slate-500 mt-2 mb-4">
+Terima kasih atas donasi Anda
+</p>
+<button onclick="backLobby()"
+class="bg-emerald-600 text-white px-4 py-2 rounded-lg">
+Kembali ke Lobby
+</button>
+</div>
+
+<!-- ERROR -->
+<div id="error" class="hidden">
+<div class="text-red-500 text-6xl mb-3">✖</div>
+<h2 class="text-red-600 text-xl font-bold">
+Pembayaran Gagal
+</h2>
+<p class="text-slate-500 mt-2 mb-4">
+Mohon isi semua data dengan benar
+</p>
+<button onclick="closeModal()"
+class="bg-slate-300 px-4 py-2 rounded-lg">
+Tutup
+</button>
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
