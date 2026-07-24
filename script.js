@@ -188,10 +188,10 @@ function closeModal(){
 
 // kembali ke lobby
 function backLobby(){
-    window.location.href = "lobby.html";
+    window.location.href = "index.html";
 }
 
 // kembali ke detail
 function backDetail(){
-    window.location.href = "lobby.html#detailPage";
+    window.location.href = "index.html#detailPage";
 }
